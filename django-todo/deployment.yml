@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp1
+spec:
+  replicas: 2  # Correct field name is replicas
+  selector:
+    matchLabels:
+      app: myapp1
+  template:
+    metadata:
+      labels:
+        app: myapp1
+    spec:
+      containers:
+      - name: myapp1
+        image: belleysatish170/todo-app:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8000
